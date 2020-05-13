@@ -12,14 +12,15 @@ class LivroDetalheView:
         ]
 
         layout += [
-            [gui.Button("Editar")],
-            [gui.Button("Excluir")],
-            [gui.Button("Voltar")]
+            [gui.Button("Editar", key="editar")],
+            [gui.Button("Excluir", key="excluir")],
+            [gui.Button("Voltar", key=None)]
         ]
 
         self.window = gui.Window("Livro", layout)
 
     def show(self):
-        self.window.read()
+        event, values = self.window.read()
+        self.window.close()
+        return event, values
 
-LivroDetalheView(Livro("bras cubas", "machado", 1989)).show()

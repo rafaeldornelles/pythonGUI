@@ -5,19 +5,20 @@ class LivroCadastroView:
         layout = [
             [gui.Text("Cadastro de Livro")],
             [gui.Text("Título:")],
-            [gui.InputText()],
+            [gui.InputText(key="titulo")],
             [gui.Text("Autor:")],
-            [gui.InputText()],
+            [gui.InputText(key="autor")],
             [gui.Text("Ano:")],
-            [gui.InputText()],
-            [gui.Button("Cadastrar")],
-            [gui.Button("Voltar")]
+            [gui.InputText(key="ano")],
+            [gui.Button("Cadastrar", key="cadastrar")],
+            [gui.Button("Voltar", key=None)]
         ]
 
         self.window = gui.Window("Cadastro de Usuário", layout)
 
     def show(self):
-        self.window.read()
+        event, values = self.window.read()
+        self.window.close()
+        return event, values
 
 
-LivroCadastroView().show()

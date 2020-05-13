@@ -3,18 +3,16 @@ class LivroMenuView:
     def __init__(self):
         gui.theme("black")
         layout = [
-            [gui.Text("Listar")],
-            [gui.Button("Pesquisar")],
-            [gui.Button("Devolver")],
-            [gui.Button("Doar")],
-            [gui.Button("Voltar")]
+            [gui.Text("Listar", key="listar")],
+            [gui.Button("Pesquisar", key="pesquisar")],
+            [gui.Button("Devolver", key="devolver")],
+            [gui.Button("Doar", key="doar")],
+            [gui.Button("Voltar", key=None)]
         ]
 
         self.window = gui.Window("Livros", layout)
 
     def show(self):
-        self.window.read()
-
-
-
-LivroMenuView().show()
+        event, values = self.window.read()
+        self.window.close()
+        return event, values

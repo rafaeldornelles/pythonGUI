@@ -4,18 +4,19 @@ class LivroPesquisarView:
         gui.theme("black")
         layout = [
             [gui.Text("Pesquisar Usuário")],
-            [gui.InputText()],
-            [gui.Button("Pesquisar por Título")],
-            [gui.Button("Pesquisar por Autor")],
-            [gui.Button("Pesquisar por Ano")],
-            [gui.Button("Voltar")]
+            [gui.InputText(key="pesquisa")],
+            [gui.Button("Pesquisar por Título", key="porTitulo")],
+            [gui.Button("Pesquisar por Autor", key="porAutor")],
+            [gui.Button("Pesquisar por Ano", key="porAno")],
+            [gui.Button("Voltar", key=None)]
         ]
 
         self.window = gui.Window("Usuários", layout)
 
     def show(self):
-        self.window.read()
+        event, values = self.window.read()
+        self.window.close()
+        return event, values
 
 
 
-LivroPesquisarView().show()
