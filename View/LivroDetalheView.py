@@ -24,3 +24,6 @@ class LivroDetalheView:
         self.window.close()
         return event, values
 
+    def confirmaExclusao(self):
+        gui.popup("Livro excluido")
+

@@ -18,5 +18,12 @@ class LivroPesquisarView:
         self.window.close()
         return event, values
 
+    def campoVazio(self):
+        gui.popup("Preencha o campo de pesquisa")
+
+    def nenhumEncontrado(self):
+        gui.popup("Nenhum livro encontrado")
+
+
 
 

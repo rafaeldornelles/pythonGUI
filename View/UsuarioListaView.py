@@ -4,7 +4,7 @@ from Model.Usuario import Usuario
 
 
 class UsuarioListaView:
-    def __init__(self, lista):
+    def __init__(self, lista, botao="Ver mais"):
         gui.theme("black")
         layout = []
 
@@ -13,10 +13,10 @@ class UsuarioListaView:
 
         for i, usuario in enumerate(lista):
             layout.append(
-                [gui.Text(f"{i}. {usuario.getNome().title()}"), gui.Button("Ver mais", key=usuario.getId())],
+                [gui.Text(f"{i}. {usuario.getNome().title()}"), gui.Button(botao, key=usuario.getId())],
             )
 
-        layout.append([gui.Button("Voltar")])
+        layout.append([gui.Button("Voltar", key=None)])
 
         self.window = gui.Window("Usuários", layout)
 

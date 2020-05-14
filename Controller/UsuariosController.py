@@ -56,10 +56,8 @@ class UsuariosController:
             self.editarUsuario(usuario)
 
         if event == "excluir":
-            view.confirmaExclusao()
-            self.dao.deletar(usuario)
-            self.todosUsuarios = self.dao.todos()
             self.excluirUsuario(usuario)
+            view.confirmaExclusao()
 
 
     def pesquisarUsuario(self):
@@ -101,7 +99,8 @@ class UsuariosController:
                 break
 
     def excluirUsuario(self, usuario):
-        pass
+        self.dao.deletar(usuario)
+        self.todosUsuarios = self.dao.todos()
 
 
 

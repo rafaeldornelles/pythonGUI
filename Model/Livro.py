@@ -33,11 +33,22 @@ class Livro:
     def setId(self, id):
         self.__id = id
 
+    def setTitulo(self, titulo):
+        self.__titulo = titulo
+
+    def setAutor(self, autor):
+        self.__autor = autor
+
+    def setAno(self, ano):
+        self.__ano = ano
+
     def setStatus(self, status:bool):
         self.__status = status
 
     def setLocatario(self, locatario):
         self.__locatario = locatario
+
+
 
     def __str__(self):
         return f"{self.getTitulo()}, de {self.getAutor()} ({self.getAno()})"

@@ -6,7 +6,7 @@ class LivroMenuView:
             [gui.Text("Listar", key="listar")],
             [gui.Button("Pesquisar", key="pesquisar")],
             [gui.Button("Devolver", key="devolver")],
-            [gui.Button("Doar", key="doar")],
+            [gui.Button("Cadastrar", key="cadastrar")],
             [gui.Button("Voltar", key=None)]
         ]
 

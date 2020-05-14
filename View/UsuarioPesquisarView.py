@@ -1,9 +1,9 @@
 import PySimpleGUI as gui
 class UsuarioPesquisarView:
-    def __init__(self):
+    def __init__(self, titulo = "Pesquisar Usuário"):
         gui.theme("black")
         layout = [
-            [gui.Text("Pesquisar Usuário")],
+            [gui.Text(titulo)],
             [gui.InputText(key="nome")],
             [gui.Button("Pesquisar por Nome", key="pesquisar")],
             [gui.Button("Voltar", key="voltar")]
