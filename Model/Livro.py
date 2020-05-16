@@ -27,7 +27,7 @@ class Livro:
     def getStatus(self):
         return self.__status
 
-    def getLocatario_id(self):
+    def getLocatario(self):
         return self.__locatario
 
     def setId(self, id):
@@ -45,7 +45,7 @@ class Livro:
     def setStatus(self, status:bool):
         self.__status = status
 
-    def setLocatario(self, locatario):
+    def setLocatario(self, locatario:Usuario):
         self.__locatario = locatario
 
 

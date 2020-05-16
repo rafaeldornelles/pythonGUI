@@ -13,7 +13,7 @@ class UsuarioListaView:
 
         for i, usuario in enumerate(lista):
             layout.append(
-                [gui.Text(f"{i}. {usuario.getNome().title()}"), gui.Button(botao, key=usuario.getId())],
+                [gui.Text(f"{i + 1}. {usuario.getNome().title()}"), gui.Button(botao, key=usuario.getId())],
             )
 
         layout.append([gui.Button("Voltar", key=None)])
@@ -24,5 +24,8 @@ class UsuarioListaView:
         event, values =  self.window.read()
         self.window.close()
         return event, values
+
+    def retiradaEfetuada(self, livro):
+        gui.popup(f"Livro '{livro.getTitulo()}' retirado com sucesso!")
 
 

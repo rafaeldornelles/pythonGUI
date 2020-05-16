@@ -12,6 +12,7 @@ class LivroDetalheView:
         ]
 
         layout += [
+            [gui.Button("Retirar", key="retirar")],
             [gui.Button("Editar", key="editar")],
             [gui.Button("Excluir", key="excluir")],
             [gui.Button("Voltar", key=None)]
@@ -26,4 +27,7 @@ class LivroDetalheView:
 
     def confirmaExclusao(self):
         gui.popup("Livro excluido")
+
+    def livroIndisponível(self):
+        gui.popup("livro Indisponível para retirada")
 

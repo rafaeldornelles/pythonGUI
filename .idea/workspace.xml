@@ -6,14 +6,16 @@
       <change beforePath="$PROJECT_DIR$/Controller/LivrosController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LivrosController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/UsuariosController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UsuariosController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/biblioteca.db" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/biblioteca.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/LivroDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dao/LivroDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dao/UsuarioDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dao/UsuarioDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Db/Parser/LivroParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Db/Parser/LivroParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/Livro.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Livro.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/LivroCadastroView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/LivroCadastroView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/LivroDetalheView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/LivroDetalheView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/LivroListaView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/LivroListaView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/LivroMenuView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/LivroMenuView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/LivroPesquisarView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/LivroPesquisarView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/UsuarioDetalheView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/UsuarioDetalheView.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/UsuarioListaView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/UsuarioListaView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/UsuarioPesquisarView.py" beforeDir="false" afterPath="$PROJECT_DIR$/View/UsuarioPesquisarView.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +192,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

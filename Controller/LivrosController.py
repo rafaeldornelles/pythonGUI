@@ -17,9 +17,8 @@ class LivrosController:
     todosLivros = dao.todos()
 
     def __init__(self):
-        event, _ = LivroMenuView().show()
-
         while True:
+            event, _ = LivroMenuView().show()
             if event == "listar":
                 self.listarLivros(self.todosLivros)
             elif event == "pesquisar":
@@ -28,13 +27,16 @@ class LivrosController:
                 self.devolverLivro()
             elif event == "cadastrar":
                 self.cadastrarLivro()
+            else:
+                break
+
 
     def listarLivros(self, livros):
         event, _ = LivroListaView(livros).show()
 
         for livro in livros:
             if event == livro.getId():
-                LivroDetalheView(livro).show()
+                self.mostrarLivro(livro)
 
     def pesquisarLivro(self):
         while True:
@@ -54,6 +56,8 @@ class LivrosController:
                     result = self.dao.pesquisarPorAutor(pesquisa)
                 elif event == "porAno":
                     result = self.dao.pesquisarPorAno(pesquisa)
+                else:
+                    break
 
                 if len(result) == 0:
                     view.nenhumEncontrado()
@@ -114,11 +118,10 @@ class LivrosController:
         while True:
             view = LivroCadastroView()
             event, values = view.show()
-
-            if event == None:
+            if event == None or event == "voltar":
                 break
 
-            if values["titulo"] == None or values["autor"] == None or values["ano"] == None:
+            if values["titulo"] == "" or values["autor"] == "" or values["ano"] == "":
                 view.campoVazio()
                 continue
 
@@ -133,7 +136,15 @@ class LivrosController:
             view = LivroDetalheView(livro)
             event, result = view.show()
 
-            if event == None:
+            if event == None or event == "Voltar":
+                break
+
+            elif event == "retirar":
+                if livro.getStatus() == False:
+                    view.livroIndisponível()
+                    continue
+
+                self.retirarLivro(livro)
                 break
 
             elif event == "editar":
@@ -168,6 +179,45 @@ class LivrosController:
         self.dao.deletar(livro)
         self.todosLivros = self.dao.todos()
         view.confirmaExclusao()
+
+    def retirarLivro(self, livro):
+        while True:
+            pesquisaView = UsuarioPesquisarView("Digite o nome do usuário que deseja retirar")
+            event, values = pesquisaView.show()
+            usuarioDao = UsuarioDAO()
+
+            nomePesquisado = values["nome"]
+            if event == None:
+                break
+
+            if nomePesquisado == "":
+                pesquisaView.errorPopUp()
+                continue
+
+            result = usuarioDao.buscarPorNome(nomePesquisado)
+
+            if len(result) == 0:
+                pesquisaView.nenhumEncontrado()
+                continue
+            else:
+                listaView = UsuarioListaView(result, "Retirar Livro")
+                event, _ = listaView.show()
+
+                usuarios = usuarioDao.todos()
+                for usuario in usuarios:
+                    if event == usuario.getId():
+                        self.efetuarRetirada(livro, usuario)
+                        listaView.retiradaEfetuada(livro)
+                break
+
+    def efetuarRetirada(self, livro, usuario):
+        livro.setStatus(False)
+        livro.setLocatario(usuario)
+        self.dao.atualizar(livro)
+        self.todosLivros = self.dao.todos()
+
+
+
 
 
 

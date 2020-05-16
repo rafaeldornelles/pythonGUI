@@ -21,7 +21,7 @@ class LivroCadastroView:
             [gui.Text("Ano:")],
             [gui.InputText(default_text=ano,key="ano")],
             [gui.Button("Cadastrar", key="cadastrar")],
-            [gui.Button("Voltar", key=None)]
+            [gui.Button("Voltar", key="voltar")]
         ]
 
         self.window = gui.Window("Cadastro de Usuário", layout)

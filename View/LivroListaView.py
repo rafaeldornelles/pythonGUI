@@ -5,11 +5,14 @@ from Model.Livro import Livro
 class LivroListaView:
     def __init__(self, lista:[Livro]):
         gui.theme("black")
-        layout = [[gui.Text("Livros:")]]
+        layout = []
 
-        for livro in lista:
+        if len(lista) == 0:
+            layout.append([gui.Text("Nenhum Livro cadastrado")])
+
+        for i, livro in enumerate(lista):
             layout.append(
-                [gui.Text(livro.getTitulo()), gui.Button("Ver mais", key=livro.getId())]
+                [gui.Text(f"{i + 1}. {livro.getTitulo().title()}"), gui.Button("Ver mais", key=livro.getId())],
             )
 
         layout.append([gui.Button("Voltar", key=None)])

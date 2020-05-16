@@ -17,7 +17,7 @@ class LivroDAO:
 
     def inserir(self, livro:Livro):
         query = "INSERT INTO Livro (titulo, autor, ano, status, locatario_id) VALUES (?,?,?,?,?)"
-        params = (livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getStatus(), livro.getLocatario().getId())
+        params = (livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getStatus(), None)
 
         newId = self.db.exec(query, params)
         livro.setId(newId)
@@ -25,7 +25,8 @@ class LivroDAO:
 
     def atualizar(self, livro:Livro):
         query = "UPDATE Livro SET titulo = ?, autor = ?, ano = ?, status = ?, locatario_id = ? WHERE id = ?"
-        params = (livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getStatus(), livro.getLocatario().getId(), livro.getId())
+        locatario = livro.getLocatario().getId() if livro.getLocatario() != None else None
+        params = (livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getStatus(), locatario, livro.getId())
 
         self.db.exec(query, params)
 
@@ -66,6 +67,13 @@ class LivroDAO:
             return LivroParser.toLivro(result)
         except:
             return None
+
+    def consultarEmprestimoPorUsuario(self, usuario):
+        query = "SELECT l.id, l.titulo, l.autor, l.ano, l.status, l.locatario_id FROM Livro l JOIN Usuario u ON l.locatario_id = u.id WHERE u.id = ?"
+        params = (usuario.getId(), )
+
+        result = self.db.query(query, params)
+        return LivroParser.toLivro(result)
 
 
 

@@ -1,6 +1,6 @@
 from typing import Tuple, List
 
-from Dao import UsuarioDAO
+from Dao.UsuarioDAO import UsuarioDAO
 from Model.Livro import Livro
 
 
@@ -15,7 +15,7 @@ class LivroParser:
             ano:int = tupla[3]
             status:bool = tupla[4]
             locatario_id:int = tupla[5]
-            locatario = UsuarioDAO().pesquisarPorId(locatario_id)
+            locatario = UsuarioDAO().pesquisarPorId(locatario_id) if (locatario_id != None) else None
 
             livro = Livro(titulo, autor, ano, status, locatario, id)
             livros.append(livro)

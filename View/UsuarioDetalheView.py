@@ -5,7 +5,7 @@ from Model.Usuario import Usuario
 
 
 class UsuarioDetalheView:
-    def __init__(self, usuario:Usuario, devolver = False):
+    def __init__(self, usuario:Usuario, devolver = False, retirar = False):
         emprestimos = LivroDAO().livrosRetiradosPor(usuario)
         layout = [
             [gui.Text(usuario.getNome())],
@@ -15,8 +15,8 @@ class UsuarioDetalheView:
         if len(emprestimos) >0:
             for i,livro in enumerate(emprestimos):
                 row = [gui.Text(f"{i}. {livro}")]
-                if devolver:
-                    row.append(gui.Button("Devolver", key=livro.getId()))
+                if devolver or retirar:
+                    row.append(gui.Button("Devolver" if devolver else "Retirar", key=livro.getId()))
 
                 layout.append(row)
         else:
@@ -26,7 +26,7 @@ class UsuarioDetalheView:
             [gui.Button("Editar", key="editar")],
             [gui.Button("Excluir", key ="excluir")],
             [gui.Button("Voltar", key=None)]
-        ] if not devolver else [gui.Button("Voltar", key=None)]
+        ] if not devolver else [[gui.Button("Voltar", key=None)]]
 
         self.window = gui.Window("Usuários", layout)
 

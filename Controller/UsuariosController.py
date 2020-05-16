@@ -8,10 +8,12 @@ from View.UsuarioPesquisarView import UsuarioPesquisarView
 
 
 class UsuariosController:
-    dao = UsuarioDAO()
-    todosUsuarios = dao.todos()
+
 
     def __init__(self):
+        self.dao = UsuarioDAO()
+        self.todosUsuarios = self.dao.todos()
+
         event, _ = UsuarioMenuView().show()
 
         if event == "cadastro":
@@ -39,7 +41,9 @@ class UsuariosController:
 
 
 
-    def listarUsuarios(self, usuarios = todosUsuarios):
+    def listarUsuarios(self, usuarios = None):
+        if usuarios == None:
+            usuarios = self.dao.todos()
         event, _ = UsuarioListaView(usuarios).show()
 
         for usuario in usuarios:
